@@ -10,17 +10,18 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.composequadrant.ui.theme.ComposeQuadrantTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,21 +30,23 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ComposeQuadrantTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
                     Quad(
-                        heading1 ="Text composable" ,
-                        content1 ="Displays text and follows the recommended Material Design guidelines." ,
+                        heading1 = stringResource(R.string.heading1) ,
+                        content1 = stringResource(R.string.description1) ,
                         shade1 =0xFFEADDFF ,
-                        heading2 ="Image composable" ,
-                        content2 ="Creates a composable that lays out and draws a given Painter class object." ,
+                        heading2 = stringResource(R.string.heading2) ,
+                        content2 = stringResource(R.string.description2) ,
                         shade2 = 0xFFD0BCFF,
-                        heading3 = "Row composable",
-                        content3 ="A layout composable that places its children in a horizontal sequence." ,
+                        heading3 = stringResource(R.string.heading3),
+                        content3 = stringResource(R.string.description3) ,
                         shade3 = 0xFFB69DF8,
-                        heading4 = "Column composable",
-                        content4 ="A layout composable that places its children in a vertical sequence." ,
+                        heading4 = stringResource(R.string.heading4),
+                        content4 = stringResource(R.string.description4) ,
                         shade4 = 0xFFF6EDFF,
-                        modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
@@ -52,22 +55,28 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TextQuad(heading: String, content: String, shade: Long, modifier: Modifier = Modifier) {
+fun TextQuad(heading: String,
+             content: String,
+             shade: Long,
+             modifier: Modifier = Modifier
+) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.background(color = Color(shade))
+        modifier = modifier.fillMaxSize().background(color = Color(shade))
+
     ) {
+        // Title Text
         Text(
             text = heading,
             fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Justify,
             modifier = Modifier.padding(end = 16.dp)
         )
+        //Description Text
         Text(
             text = content,
             textAlign = TextAlign.Justify,
-            fontSize = 16.sp
+            modifier = Modifier.padding(16.dp)
         )
     }
 }
@@ -86,11 +95,11 @@ fun Quad(heading1: String,
          shade3: Long,
          shade4: Long,
          modifier: Modifier = Modifier
-    ) {
+) {
     Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize().padding(top= 25.dp)
+//        verticalArrangement = Arrangement.Center,
+//        horizontalAlignment = Alignment.CenterHorizontally,
+//        modifier = Modifier.fillMaxSize()//.padding(top= 25.dp)
     ) {
         Row(
             Modifier.weight(1f)) {
@@ -98,26 +107,31 @@ fun Quad(heading1: String,
                 heading = heading1,
                 content = content1,
                 shade = shade1,
-                //modifier = Modifier.weight(0.5f)
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(top = 32.dp)
             )
             TextQuad(
                 heading = heading2,
                 content = content2,
                 shade = shade2,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(top = 32.dp)
             )
         }
-        Row(Modifier.weight(0.5f)) {
+        Row(Modifier.weight(1f)) {
             TextQuad(
                 heading = heading3,
                 content = content3,
                 shade = shade3,
-                //modifier = Modifier.weight(0.5f)
+                modifier = Modifier.weight(1f)
             )
             TextQuad(
                 heading = heading4,
                 content = content4,
                 shade = shade4,
-                //modifier = Modifier.weight(0.5f)
+                modifier = Modifier.weight(1f)
             )
         }
     }
@@ -128,17 +142,17 @@ fun Quad(heading1: String,
 fun GreetingPreview() {
     ComposeQuadrantTheme {
         Quad(
-            heading1 ="Text composable" ,
-            content1 ="Displays text and follows the recommended Material Design guidelines." ,
+            heading1 =stringResource(R.string.heading1) ,
+            content1 =stringResource(R.string.description1) ,
             shade1 =0xFFEADDFF ,
-            heading2 ="Image composable" ,
-            content2 ="Creates a composable that lays out and draws a given Painter class object." ,
+            heading2 =stringResource(R.string.heading2) ,
+            content2 =stringResource(R.string.description2) ,
             shade2 = 0xFFD0BCFF,
-            heading3 = "Row composable",
-            content3 ="A layout composable that places its children in a horizontal sequence." ,
+            heading3 = stringResource(R.string.heading3),
+            content3 =stringResource(R.string.description3) ,
             shade3 = 0xFFB69DF8,
-            heading4 = "Column composable",
-            content4 ="A layout composable that places its children in a vertical sequence." ,
+            heading4 = stringResource(R.string.heading4),
+            content4 =stringResource(R.string.description4) ,
             shade4 = 0xFFF6EDFF,
         )
     }
