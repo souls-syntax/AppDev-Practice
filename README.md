@@ -21,6 +21,8 @@ This is my second repository, where I'm collecting all the Android apps I've bui
 5. **Bath Dinner Me** -
     Built a playful multipage app with buttons and navigation | experimenting with `NavController` and dynamic screen rendring.
 
+6. **Business Card** -
+    Built an Business card from designing full layout.
 - - -
 
 ## Tech Stacks

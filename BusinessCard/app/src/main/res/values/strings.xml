@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Business Card</string>
+    <string name="content1">"Hello friend hope you are fine this is my Business Card made using Jetpack Compose and Android Studio "</string>
+</resources>
