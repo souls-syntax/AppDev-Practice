@@ -6,7 +6,8 @@ This is my second repository, where I'm collecting all the Android apps I've bui
 
 ## List Of Projects
 
-1. **Greeting Card**
+1. **Greeting Card** : -
+
     A birthday greeting card with blur and sparkling effects. Focus: Learning image layering and applying blur and sparkling effects.
 
 2. **Compose Article**
